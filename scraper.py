@@ -340,7 +340,7 @@ def _is_mpeg_ts(data):
                 if data[i + 188] == 0x47:
                     return True, "MPEG-TS (chain)"
             elif i + 188 <= len(data):
-                if data[i + 188] == 0x47:
+                if (i + 188) < len(data) and data[i + 188] == 0x47:
                     return True, "MPEG-TS (sync)"
             return True, "MPEG-TS (found)"
     return False, "not MPEG-TS"
